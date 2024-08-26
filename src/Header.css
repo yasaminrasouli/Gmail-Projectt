@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.left-menu {
+  display: flex;
+  align-items: center;
+}
+.center-menu {
+  display: flex;
+  align-items: center;
+  flex: 0.7;
+  background-color: #f3f3ff;
+  border-radius: 10px;
+}
+.header_inputCaret {
+  margin-left: auto;
+  margin-right: 10px;
+  color: gray;
+}
+.center-menu input {
+  border: none;
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+}
+.searchBox {
+  padding-left: 10px;
+  font-size: 14px;
+  color: gray;
+}
+.right-menu {
+  display: flex;
+  padding-right: 20px;
+  align-items: center;
+}
+.right-menu > .MuiAvatar-root {
+  width: 30px;
+  height: 30px;
+}
