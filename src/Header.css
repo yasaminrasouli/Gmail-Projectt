@@ -10,9 +10,9 @@
 .center-menu {
   display: flex;
   align-items: center;
-  flex: 0.7;
   background-color: #f3f3ff;
   border-radius: 10px;
+  flex: 0.7;
 }
 .header_inputCaret {
   margin-left: auto;
