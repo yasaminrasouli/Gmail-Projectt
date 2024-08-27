@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "./Header";
-import SideBar from "./SideBar";
-import MailBody from "./MailBody";
-import MailList from "./MailList";
+import Header from "./Header/Header";
+import SideBar from "./SideBar/SideBar";
+import MailBody from "./MailBody/MailBody";
+import MailList from "./MailBody/MailList";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 

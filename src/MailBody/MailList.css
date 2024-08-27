@@ -1,0 +1,43 @@
+.maillist {
+  flex: 1;
+  overflow: scroll;
+}
+.maillistheader {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid whitesmoke;
+}
+.maillistheader_right {
+  margin-right: 20px;
+}
+.maillist_bottom_option {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  min-width: 200px;
+  background-color: #fff;
+  color: gray;
+  border-bottom: 2px solid #fff;
+  cursor: pointer;
+}
+.maillist_bottom_option_active {
+  background-color: rgba(255, 0, 0, 0.054);
+  transition: 400ms;
+  color: red;
+  border-bottom: 2px solid red;
+}
+.maillist_bottom {
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+.maillist_bottom_option:hover:not(.maillist_bottom_option_active) {
+  background-color: rgba(0, 17, 255, 0.054);
+  transition: 400ms;
+  border-bottom: 2px solid rgb(38, 0, 255);
+}
+.maillist_bottom_option span {
+  margin-right: 8px;
+}
