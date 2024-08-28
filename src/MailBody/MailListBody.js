@@ -36,10 +36,13 @@ const emails = [
 
 function MailListBody() {
   const navigate = useNavigate();
+  const handleEmailClick = (email) => {
+    navigate("/mail", { state: { email } });
+  };
   return (
     <div>
       {emails.map((email) => (
-        <div className="email_body" onClick={() => navigate("/mail")}>
+        <div className="email_body" onClick={() => handleEmailClick(email)}>
           <div className="email_body_emoji">
             <Checkbox />
             <Checkbox icon={<StarOutlineIcon />} checkedIcon={<StarIcon />} />

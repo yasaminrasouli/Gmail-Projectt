@@ -1,15 +1,19 @@
-.maillist {
+.maillist,
+.mailbody-header {
   flex: 1;
   overflow: scroll;
 }
-.maillistheader {
+.maillistheader,
+.mailbody-header {
   display: flex;
   justify-content: space-between;
   position: sticky;
   top: 0;
   border-bottom: 1px solid whitesmoke;
+  background-color: #fff;
 }
-.maillistheader_right {
+.maillistheader_right,
+.mailbody-header-right {
   margin-right: 20px;
 }
 .maillist_bottom_option {
@@ -40,4 +44,44 @@
 }
 .maillist_bottom_option span {
   margin-right: 8px;
+}
+.mailbody-header-left button {
+  margin-right: 10px;
+}
+.mailbody {
+  background: #f3f3ff;
+  flex: 1;
+}
+.mailbox {
+  background-color: #fff;
+  height: 100vh;
+  margin: 20px;
+  box-shadow: -2px 0px 7px 2px #0000000a;
+}
+.mailbody_des {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mailbody_description {
+  display: flex;
+  align-items: center;
+}
+.mailbody_description h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-right: 10px;
+  padding: 30px 0 30px 30px;
+}
+.mailbody_description p {
+  font-size: 14px;
+  margin-left: 10px;
+}
+.mailbody_des span {
+  margin-right: 15px;
+  color: gray;
+  font-size: 14px;
+}
+.mailbody-header-content p {
+  padding: 0 20px 20px 20px;
 }
