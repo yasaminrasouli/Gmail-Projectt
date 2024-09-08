@@ -25,6 +25,7 @@
   color: gray;
   border-bottom: 2px solid #fff;
   cursor: pointer;
+  font-size: 14px;
 }
 .maillist_bottom_option_active {
   background-color: rgba(255, 0, 0, 0.054);

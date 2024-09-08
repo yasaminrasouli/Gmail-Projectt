@@ -1,6 +1,6 @@
 import SideBarOption from "./SideBarOption";
 import "./SideBar.css";
-import { Button, IconButton } from "@mui/material";
+import { Button, IconButton, Dialog, DialogTitle } from "@mui/material";
 import InboxIcon from "@mui/icons-material/Inbox";
 import StarredIcon from "@mui/icons-material/Star";
 import SnoozedIcon from "@mui/icons-material/AccessTime";
@@ -15,37 +15,39 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 
 function SideBar() {
   return (
-    <div className="SideBar">
-      <Button
-        className="sidebar_compose"
-        startIcon={<PlusIcon fontSize="large" />}
-      >
-        Compose
-      </Button>
-      <SideBarOption
-        Icon={InboxIcon}
-        title="Inbox"
-        number={45}
-        selected={true}
-      />
-      <SideBarOption Icon={StarredIcon} title="Starred" number={45} />
-      <SideBarOption Icon={SnoozedIcon} title="Snoozed" number={45} />
-      <SideBarOption Icon={ImportantIcon} title="Important" number={45} />
-      <SideBarOption Icon={SentIcon} title="Sent" number={45} />
-      <SideBarOption Icon={DraftsIcon} title="Drafts" number={45} />
-      <SideBarOption Icon={MoreIcon} title="More" number={45} />
-      <div className="sidebar_icon">
-        <IconButton>
-          <PersonIcon />
-        </IconButton>
-        <IconButton>
-          <DuoIcon />
-        </IconButton>
-        <IconButton>
-          <LocalPhoneIcon />
-        </IconButton>
+    <>
+      <div className="SideBar">
+        <Button
+          className="sidebar_compose"
+          startIcon={<PlusIcon fontSize="large" />}
+        >
+          Compose
+        </Button>
+        <SideBarOption
+          Icon={InboxIcon}
+          title="Inbox"
+          number={45}
+          selected={true}
+        />
+        <SideBarOption Icon={StarredIcon} title="Starred" number={45} />
+        <SideBarOption Icon={SnoozedIcon} title="Snoozed" number={45} />
+        <SideBarOption Icon={ImportantIcon} title="Important" number={45} />
+        <SideBarOption Icon={SentIcon} title="Sent" number={45} />
+        <SideBarOption Icon={DraftsIcon} title="Drafts" number={45} />
+        <SideBarOption Icon={MoreIcon} title="More" number={45} />
+        <div className="sidebar_icon">
+          <IconButton>
+            <PersonIcon />
+          </IconButton>
+          <IconButton>
+            <DuoIcon />
+          </IconButton>
+          <IconButton>
+            <LocalPhoneIcon />
+          </IconButton>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

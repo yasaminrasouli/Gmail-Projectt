@@ -3,6 +3,7 @@ import Header from "./Header/Header";
 import SideBar from "./SideBar/SideBar";
 import MailBody from "./MailBody/MailBody";
 import MailList from "./MailBody/MailList";
+import ComposeContent from "./MailBody/ComposeContent";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -18,6 +19,7 @@ function App() {
             <Route path="/mail" element={<MailBody />} />
           </Routes>
         </div>
+        <ComposeContent />
       </div>
     </Router>
   );
