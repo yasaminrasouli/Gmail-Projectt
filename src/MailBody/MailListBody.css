@@ -19,7 +19,7 @@
 .email_body_content {
   display: flex;
   justify-content: space-between;
-  flex: 0.8;
+  flex: 1.8;
 }
 .email_body_content h5 {
   flex: 0.3;
@@ -29,10 +29,11 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  flex: 0.6;
 }
 .email_body_title,
 .email_body_content span {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
 }
 .email_body_des {

@@ -1,63 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MailListBody.css";
 import { Checkbox } from "@mui/material";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import StarIcon from "@mui/icons-material/Star";
 import ImportantIcon from "@mui/icons-material/LabelImportant";
 import { useNavigate } from "react-router-dom";
-
-const emails = [
-  {
-    id: 1,
-    email: "yasaminrasoulii78@gmail.com",
-    title: "this is amazing object",
-    subject: "Email 1",
-    body: "This is the first email",
-    date: "thu,28 aug 2024",
-  },
-  {
-    id: 2,
-    email: "yasaminrasoulii78@gmail.com",
-    title:
-      "this is amazing object this is amazing object this is amazing object this is amazing object",
-    subject: "Email 2",
-    body: "This is the second email",
-    date: "thu,28 aug 2024",
-  },
-  {
-    id: 3,
-    email: "yasaminrasoulii78@gmail.com",
-    title: "this is amazing object",
-    subject: "Email 3",
-    body: "This is the third email",
-    date: "thu,28 aug 2024",
-  },
-];
+import { db } from "../firebase";
+import { collection, onSnapshot } from "firebase/firestore";
 
 function MailListBody() {
   const navigate = useNavigate();
+  const [emailList, setEmailList] = useState([]);
+
   const handleEmailClick = (email) => {
     navigate("/mail", { state: { email } });
   };
+
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, "emails"), (snapshot) =>
+      setEmailList(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      )
+    );
+
+    return () => unsub();
+  }, []);
+
   return (
     <div>
-      {emails.map((email) => (
-        <div className="email_body" onClick={() => handleEmailClick(email)}>
-          <div className="email_body_emoji">
-            <Checkbox />
-            <Checkbox icon={<StarOutlineIcon />} checkedIcon={<StarIcon />} />
-            <ImportantIcon />
-          </div>
-          <div className="email_body_content" key={email.id}>
-            <h5>{email.email}</h5>
-            <div className="email_body_subject">
-              <span className="email_body_title">{email.title}</span>-
-              <span className="email_body_des"> {email.subject}</span>
+      {emailList.map(({ id, data }) => {
+        const date = data.timestamp
+          ? new Date(data.timestamp.seconds * 1000).toUTCString()
+          : "No date available";
+        return (
+          <div
+            key={id}
+            className="email_body"
+            onClick={() => handleEmailClick(data)}
+          >
+            <div className="email_body_emoji">
+              <Checkbox />
+              <Checkbox icon={<StarOutlineIcon />} checkedIcon={<StarIcon />} />
+              <ImportantIcon />
             </div>
-            <span> {email.date}</span>
+            <div className="email_body_content">
+              <h5>{data.to}</h5>
+              <div className="email_body_subject">
+                <span className="email_body_title">{data.Subject}</span>-
+                <span className="email_body_des"> {data.Message}</span>
+              </div>
+              <span>{date}</span>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

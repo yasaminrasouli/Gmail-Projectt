@@ -12,14 +12,18 @@ import PlusIcon from "@mui/icons-material/Add";
 import PersonIcon from "@mui/icons-material/Person";
 import DuoIcon from "@mui/icons-material/Duo";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import { useDispatch } from "react-redux";
+import { openSendMessage } from "../features/mailSlice";
 
 function SideBar() {
+  const dispatch = useDispatch();
   return (
     <>
       <div className="SideBar">
         <Button
           className="sidebar_compose"
           startIcon={<PlusIcon fontSize="large" />}
+          onClick={() => dispatch(openSendMessage())}
         >
           Compose
         </Button>

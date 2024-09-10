@@ -12,20 +12,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import PrintIcon from "@mui/icons-material/Print";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { IconButton } from "@mui/material";
-import { useLocation } from "react-router-dom";
-import { ArrowLeft } from "@mui/icons-material";
-
-const leftIcons = [
-  { icon: <ArrowBackIcon />, key: "back" },
-  { icon: <MoveToInboxIcon />, key: "inbox" },
-  { icon: <InfoIcon />, key: "info" },
-  { icon: <DeleteIcon />, key: "delete" },
-  { icon: <EmailIcon />, key: "email" },
-  { icon: <WatchLaterIcon />, key: "later" },
-  { icon: <CheckCircleIcon />, key: "check" },
-  { icon: <ImportantIcon />, key: "important" },
-  { icon: <MoreVertIcon />, key: "more" },
-];
+import { useNavigate, useLocation } from "react-router-dom";
 
 const rightIcons = [
   { icon: <PrintIcon />, key: "print" },
@@ -33,8 +20,33 @@ const rightIcons = [
 ];
 
 function MailBody() {
+  const navigate = useNavigate();
   const location = useLocation();
   const email = location.state?.email;
+
+  const handleBackClick = () => {
+    navigate("/");
+  };
+
+  const leftIcons = [
+    {
+      icon: <ArrowBackIcon onClick={handleBackClick} />,
+      key: "back",
+    },
+    { icon: <MoveToInboxIcon />, key: "inbox" },
+    { icon: <InfoIcon />, key: "info" },
+    { icon: <DeleteIcon />, key: "delete" },
+    { icon: <EmailIcon />, key: "email" },
+    { icon: <WatchLaterIcon />, key: "later" },
+    { icon: <CheckCircleIcon />, key: "check" },
+    { icon: <ImportantIcon />, key: "important" },
+    { icon: <MoreVertIcon />, key: "more" },
+  ];
+
+  const date = email?.timestamp
+    ? new Date(email.timestamp.seconds * 1000).toLocaleString()
+    : "No date available";
+
   return (
     <div className="mailbody">
       <div className="mailbody-header">
@@ -52,14 +64,14 @@ function MailBody() {
       <div className="mailbox">
         <div className="mailbody_des">
           <div className="mailbody_description">
-            <h2>{email.title}</h2>
+            <h2>{email?.Subject}</h2>
             <ImportantIcon style={{ color: "#f7db64" }} />
-            <p>{email.email}</p>
+            <p>{email?.to}</p>
           </div>
-          <span>{email.date}</span>
+          <span>{date}</span>
         </div>
         <div className="mailbody-header-content">
-          <p>{email.subject}</p>
+          <p>{email?.Message}</p>
         </div>
       </div>
     </div>
